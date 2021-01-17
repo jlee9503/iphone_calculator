@@ -1,0 +1,88 @@
+@import url("https://fonts.googleapis.com/css2?family=Source+Sans+Pro&display=swap");
+$basic-font-color: #fff;
+$basic-font: "Source Sans Pro", sans-serif;
+$basic-font-size: 35px;
+$button-size: 100px;
+$num-button: #505050;
+$operator-button: #ff9500;
+$tool-button: #d4d4d2;
+
+@mixin center() {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+
+@mixin layout() {
+	display: grid;
+	grid-template-columns: repeat(4, $button-size);
+	grid-template-rows: repeat(5, $button-size);
+}
+
+* {
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+}
+
+body {
+	@include center();
+	margin-top: 100px;
+}
+
+.calculator-wrapper {
+	background-color: #1c1c1c;
+	height: fit-content;
+	width: fit-content;
+	padding: 10px 20px 20px 20px;
+	@include center();
+	flex-direction: column;
+	font-family: $basic-font;
+}
+
+.display__time,
+.answer {
+	color: $basic-font-color;
+}
+
+.answer {
+	margin-top: 60px;
+	margin-bottom: 50px;
+	width: 100%;
+	text-align: right;
+	padding-right: 20px;
+	font-size: 45px;
+}
+
+.function__buttons {
+	@include layout();
+	gap: 10px;
+	button {
+		outline-style: none;
+		border: none;
+		cursor: pointer;
+		border-radius: 50%;
+		font-size: $basic-font-size;
+		&:hover {
+			opacity: 0.8;
+		}
+	}
+	.span__two {
+		border-radius: 50px;
+		grid-column: span 2;
+	}
+}
+
+.num {
+	background-color: $num-button;
+	color: $basic-font-color;
+}
+
+.tool {
+	background-color: $tool-button;
+}
+
+.operator {
+	background-color: $operator-button;
+	color: $basic-font-color;
+}

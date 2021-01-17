@@ -1,0 +1,183 @@
+@import url("https://fonts.googleapis.com/css2?family=Source+Sans+Pro&display=swap");
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 100px;
+}
+
+.calculator-wrapper {
+  background-color: #1c1c1c;
+  height: -webkit-fit-content;
+  height: -moz-fit-content;
+  height: fit-content;
+  width: -webkit-fit-content;
+  width: -moz-fit-content;
+  width: fit-content;
+  padding: 10px 20px 20px 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  font-family: "Source Sans Pro", sans-serif;
+}
+
+.display__time,
+.answer {
+  color: #fff;
+}
+
+.answer {
+  margin-top: 60px;
+  margin-bottom: 50px;
+  width: 100%;
+  text-align: right;
+  padding-right: 20px;
+  font-size: 45px;
+}
+
+.function__buttons {
+  display: -ms-grid;
+  display: grid;
+  -ms-grid-columns: 100px 10px 100px 10px 100px 10px 100px;
+  grid-template-columns: repeat(4, 100px);
+  -ms-grid-rows: 100px 10px 100px 10px 100px 10px 100px 10px 100px;
+  grid-template-rows: repeat(5, 100px);
+  gap: 10px;
+}
+
+.function__buttons > *:nth-child(1) {
+  -ms-grid-row: 1;
+  -ms-grid-column: 1;
+}
+
+.function__buttons > *:nth-child(2) {
+  -ms-grid-row: 1;
+  -ms-grid-column: 3;
+}
+
+.function__buttons > *:nth-child(3) {
+  -ms-grid-row: 1;
+  -ms-grid-column: 5;
+}
+
+.function__buttons > *:nth-child(4) {
+  -ms-grid-row: 1;
+  -ms-grid-column: 7;
+}
+
+.function__buttons > *:nth-child(5) {
+  -ms-grid-row: 3;
+  -ms-grid-column: 1;
+}
+
+.function__buttons > *:nth-child(6) {
+  -ms-grid-row: 3;
+  -ms-grid-column: 3;
+}
+
+.function__buttons > *:nth-child(7) {
+  -ms-grid-row: 3;
+  -ms-grid-column: 5;
+}
+
+.function__buttons > *:nth-child(8) {
+  -ms-grid-row: 3;
+  -ms-grid-column: 7;
+}
+
+.function__buttons > *:nth-child(9) {
+  -ms-grid-row: 5;
+  -ms-grid-column: 1;
+}
+
+.function__buttons > *:nth-child(10) {
+  -ms-grid-row: 5;
+  -ms-grid-column: 3;
+}
+
+.function__buttons > *:nth-child(11) {
+  -ms-grid-row: 5;
+  -ms-grid-column: 5;
+}
+
+.function__buttons > *:nth-child(12) {
+  -ms-grid-row: 5;
+  -ms-grid-column: 7;
+}
+
+.function__buttons > *:nth-child(13) {
+  -ms-grid-row: 7;
+  -ms-grid-column: 1;
+}
+
+.function__buttons > *:nth-child(14) {
+  -ms-grid-row: 7;
+  -ms-grid-column: 3;
+}
+
+.function__buttons > *:nth-child(15) {
+  -ms-grid-row: 7;
+  -ms-grid-column: 5;
+}
+
+.function__buttons > *:nth-child(16) {
+  -ms-grid-row: 7;
+  -ms-grid-column: 7;
+}
+
+.function__buttons > *:nth-child(17) {
+  -ms-grid-row: 9;
+  -ms-grid-column: 1;
+}
+
+.function__buttons > *:nth-child(18) {
+  -ms-grid-row: 9;
+  -ms-grid-column: 3;
+}
+
+.function__buttons > *:nth-child(19) {
+  -ms-grid-row: 9;
+  -ms-grid-column: 5;
+}
+
+.function__buttons > *:nth-child(20) {
+  -ms-grid-row: 9;
+  -ms-grid-column: 7;
+}
+.function__buttons button {
+  outline-style: none;
+  border: none;
+  cursor: pointer;
+  border-radius: 50%;
+  font-size: 35px;
+}
+.function__buttons button:hover {
+  opacity: 0.8;
+}
+.function__buttons .span__two {
+  border-radius: 50px;
+  -ms-grid-column-span: 2;
+  grid-column: span 2;
+}
+
+.num {
+  background-color: #505050;
+  color: #fff;
+}
+
+.tool {
+  background-color: #d4d4d2;
+}
+
+.operator {
+  background-color: #ff9500;
+  color: #fff;
+}
+/*# sourceMappingURL=style.css.map */
