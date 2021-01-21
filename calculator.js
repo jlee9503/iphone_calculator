@@ -4,53 +4,96 @@ const operatorBtns = document.querySelectorAll("#num-operator");
 const allClearBtn = document.querySelector("#all-clear");
 const deleteBtn = document.querySelector("#delete");
 const equalBtn = document.querySelector("#equal-btn");
-const outputText = document.querySelector(".answer");
+const prevOutputText = document.querySelector("#prev-output");
+const currOutputText = document.querySelector("#curr-output");
+const percentBtn = document.querySelector("#percent");
 
 //Calculator Class
 class Calculator {
-  constructor(outputText) {
-    this.outputText = outputText;
-    this.clear();
-  }
+	constructor(prevOutputText, currOutputText) {
+		this.prevOutputText = prevOutputText;
+		this.currOutputText = currOutputText;
+		this.clear();
+	}
 
-  clear() {
-    this.output = '';
-    this.operator = undefined;
-  }
+	clear() {
+		this.prevOutput = "";
+		this.currOutput = "";
+		this.operator = "";
+	}
 
-  delete() {
+	delete() {}
 
-  }
+	appendNum(number) {
+		if (number === "." && this.currOutput.includes(".")) {
+			return;
+		}
+		this.currOutput = this.currOutput + number;
+	}
 
-  appendNum(number) {
-    this.output = this.output + number;
-  }
+	selectOperator(operator) {
+		if (this.currOutput === "") {
+			return;
+		}
+		if (this.prevOutput !== "") {
+			this.operation();
+		}
+		this.operator = operator;
+		this.prevOutput = this.currOutput;
+		this.currOutput = "";
+	}
 
-  selectOperator(operator) {
+	operation() {
+		let result = 0;
+		const prevNum = parseFloat(this.prevOutput);
+		const currNum = parseFloat(this.currOutput);
 
-  }
+		switch (this.operator) {
+			case "+":
+				result = prevNum + currNum;
+				break;
+			case "−":
+				result = prevNum - currNum;
+				break;
+			case "×":
+				result = prevNum * currNum;
+				break;
+			case "÷":
+				result = prevNum / currNum;
+				break;
+			default:
+				break;
+		}
+		
+		this.prevOutput = "";
+		this.currOutput = result;
+	}
 
-  operation() {
-
-  }
-
-  updateDisplay() {
-    this.outputText.innerText = this.output;
-  }
+	updateDisplay() {
+		this.currOutputText.innerText = this.currOutput;
+		this.prevOutputText.innerText = this.prevOutput + this.operator;
+	}
 }
 
 // Create a new calculator class
-const calc = new Calculator(outputText);
+const calc = new Calculator(prevOutputText, currOutputText);
 
 // Event Listeners
 numberBtns.forEach((btn) => {
 	btn.addEventListener("click", () => {
-    calc.appendNum(btn.innerText);
-    calc.updateDisplay();
+		calc.appendNum(btn.innerText);
+		calc.updateDisplay();
 	});
 });
 
-allClearBtn.addEventListener('click', (btn) => {
-  calc.clear();
-  calc.updateDisplay();
+operatorBtns.forEach((btn) => {
+	btn.addEventListener("click", () => {
+		calc.selectOperator(btn.innerText);
+		calc.updateDisplay();
+	});
+});
+
+allClearBtn.addEventListener("click", (btn) => {
+	calc.clear();
+	calc.updateDisplay();
 });
