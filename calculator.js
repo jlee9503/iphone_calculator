@@ -1,3 +1,10 @@
+// Display Current Time
+const time = document.querySelector(".display__time");
+let date = new Date();
+let hr = date.getHours() < 10 ? "0" + date.getHours() : date.getHours();
+let min = date.getMinutes() < 10 ? "0" + date.getMinutes() : date.getMinutes();
+time.innerHTML = `${hr + " : " + min}`;
+
 // Selectors for all buttons
 const numberBtns = document.querySelectorAll(".num");
 const operatorBtns = document.querySelectorAll("#num-operator");
@@ -22,7 +29,14 @@ class Calculator {
 		this.operator = "";
 	}
 
-	delete() {}
+	delete() {
+		this.currOutput = this.currOutput.slice(0, -1);
+		if (this.operator !== "" && this.currOutput === "") {
+			this.currOutput = this.prevOutput;
+			this.prevOutput = "";
+			this.operator = "";
+		}
+	}
 
 	appendNum(number) {
 		if (number === "." && this.currOutput.includes(".")) {
@@ -62,16 +76,25 @@ class Calculator {
 				result = prevNum / currNum;
 				break;
 			default:
-				break;
+				return;
 		}
-		
+
 		this.prevOutput = "";
+		this.operator = "";
 		this.currOutput = result;
+	}
+
+	percentOperation() {
+		this.currOutput = parseFloat(this.currOutput) * 0.01;
 	}
 
 	updateDisplay() {
 		this.currOutputText.innerText = this.currOutput;
-		this.prevOutputText.innerText = this.prevOutput + this.operator;
+		if (this.operator != null) {
+			this.prevOutputText.innerText = `${this.prevOutput} ${this.operator}`;
+		} else {
+			this.prevOutputText.innerText = "";
+		}
 	}
 }
 
@@ -95,5 +118,20 @@ operatorBtns.forEach((btn) => {
 
 allClearBtn.addEventListener("click", (btn) => {
 	calc.clear();
+	calc.updateDisplay();
+});
+
+deleteBtn.addEventListener("click", (btn) => {
+	calc.delete();
+	calc.updateDisplay();
+});
+
+percentBtn.addEventListener("click", (btn) => {
+	calc.percentOperation();
+	calc.updateDisplay();
+});
+
+equalBtn.addEventListener("click", (btn) => {
+	calc.operation();
 	calc.updateDisplay();
 });
